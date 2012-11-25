@@ -1,0 +1,29 @@
+Plan:
+
+- MVC
+- Design classes on paper
+- View: prints board etc.
+- Controller: Interprets input and makes changes to the model
+- Model: Holds the game state (board), check if pieces shoukd be flipped
+- TDD
+
+Classes:
+
+- Board: Holds the data structure, methods for manipulating the data structure (flip tokens etc).
+- Piece state enum (Empty, White, Black).
+- Piece class that holds state, co-ordinates etc.
+- Main class which sets up model, view and controller
+- ReversiOutput which prints the board to stdout
+- ReversiController which accepts input and changes it to something the Model understands, and controls the game state (whose turn is it?, is the game over), is a move legal?
+- Player class (tracks name, colour, maybe game history).
+
+- JUnit test stuff, write the tests first (possibly)
+
+Report:
+
+- Split into MVC
+- Talk about not using a custom data structure
+- Is player model or controller?
+- Talk about each class
+- UML diagrams
+
