@@ -11,9 +11,11 @@ public class Player {
 		this.colour = colour;
 		this.name = name;
 	}
+	
 	public PieceState getColour() {
 		return colour;
 	}
+	
 	public String getName() {
 		return name;
 	}
