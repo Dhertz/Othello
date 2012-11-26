@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 import model.Board;
 import model.PieceState;
-import view.ReversiOutput;
+import view.ReversiStdoutPrinter;
 
 public class ReversiController {
 	
 	private Player player1;
 	private Player player2;
 	private Board board;
-	private ReversiOutput output;
+	private ReversiStdoutPrinter output;
 	private Scanner reader;
 	private Player currentPlayer;
 	
-	public ReversiController(Board board, ReversiOutput output) {
+	public ReversiController(Board board, ReversiStdoutPrinter output) {
 		this.board = board;
 		this.output = output;
 		reader = new Scanner(System.in);

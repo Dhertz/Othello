@@ -4,11 +4,16 @@ import model.Board;
 import model.Piece;
 import model.PieceState;
 
-public class ReversiOutput implements ReversiView {
+public class ReversiStdoutPrinter implements ReversiView {
 	
 	@Override
 	public void showBoard(Board board) {
-		System.out.println("  a b c d e f g h");
+		System.out.print("  ");
+		for (char l = 'a'; l < 'a' + board.getSize(); l++) {
+			System.out.print(l + " ");
+		}
+		System.out.println();
+		
 		int rowNum = 1;
 		for (Piece[] ps : board.getBoard()) {
 			System.out.print(rowNum + " ");

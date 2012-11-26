@@ -5,13 +5,28 @@ import java.util.ArrayList;
 public class Board {
 
 	private Piece[][] board;
-	private static final int BOARDSIZE = 8;
+	private final int BOARDSIZE;
 
 	// These arrays allow us to loop through in all possible directions
 	private static final int[] DIRECT_X = { -1, 0, 1, -1, 1, -1, 0, 1 };
 	private static final int[] DIRECT_Y = { -1, -1, -1, 0, 0, 1, 1, 1 };
 
-	public Board() {
+	public static Board withDefaultSize() {
+		return new Board();
+	}
+	
+	public static Board withCustomSize(int size) {
+		return new Board(size);
+	}
+	
+	private Board() {
+		BOARDSIZE = 8;
+		board = new Piece[BOARDSIZE][BOARDSIZE];
+		setupBoard();
+	}
+	
+	private Board(int size) {
+		BOARDSIZE = size;
 		board = new Piece[BOARDSIZE][BOARDSIZE];
 		setupBoard();
 	}
@@ -24,10 +39,13 @@ public class Board {
 		}
 
 		// Using Othello rules for initial setup, not Reversi
-		setPiece(4, 4, PieceState.WHITE);
-		setPiece(5, 4, PieceState.BLACK);
-		setPiece(4, 5, PieceState.BLACK);
-		setPiece(5, 5, PieceState.WHITE);
+		int mid = BOARDSIZE / 2;
+		int midPlusOne = (BOARDSIZE / 2) + 1;
+		
+		setPiece(mid, mid, PieceState.WHITE);
+		setPiece(midPlusOne, mid, PieceState.BLACK);
+		setPiece(mid, midPlusOne, PieceState.BLACK);
+		setPiece(midPlusOne, midPlusOne, PieceState.WHITE);
 	}
 
 	public void setPiece(int column, int row, PieceState st) {
@@ -135,6 +153,10 @@ public class Board {
 
 	public Piece getPiece(int column, int row) {
 		return board[row - 1][column - 1];
+	}
+
+	public int getSize() {
+		return BOARDSIZE;
 	}
 	
 	public int getPieceCount(PieceState st) {

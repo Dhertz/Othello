@@ -7,13 +7,14 @@ import model.PieceState;
 
 import org.junit.Test;
 
-import view.ReversiOutput;
+import view.ReversiStdoutPrinter;
+import view.ReversiView;
 
 public class ReversiTests {
 
 	@Test
 	public void testSetPiece() {
-		Board gameBoard = new Board();
+		Board gameBoard = Board.withDefaultSize();
 		
 		gameBoard.setPiece(3, 4, PieceState.BLACK);
 		
@@ -22,7 +23,7 @@ public class ReversiTests {
 	
 	@Test
 	public void testValidMoves() {
-		Board gameBoard = new Board();
+		Board gameBoard = Board.withDefaultSize();
 		
 		assertTrue(gameBoard.isValidMove(3, 4, PieceState.BLACK));
 		assertTrue(gameBoard.isValidMove(4, 3, PieceState.BLACK));
@@ -34,7 +35,7 @@ public class ReversiTests {
 	
 	@Test
 	public void testCapture() {
-		Board gameBoard = new Board();
+		Board gameBoard = Board.withDefaultSize();
 		
 		gameBoard.setPiece(3, 4, PieceState.BLACK);
 		gameBoard.capturePieces(3, 4, PieceState.BLACK);
@@ -44,8 +45,8 @@ public class ReversiTests {
 	
 	@Test
 	public void testCaptureSetSequence() {
-		Board gameBoard = new Board();
-		ReversiOutput printer = new ReversiOutput();
+		Board gameBoard = Board.withDefaultSize();
+		ReversiStdoutPrinter printer = new ReversiStdoutPrinter();
 		
 		gameBoard.setPiece(4, 3, PieceState.BLACK);
 		gameBoard.capturePieces(4, 3, PieceState.BLACK);
@@ -60,10 +61,18 @@ public class ReversiTests {
 	
 	@Test
 	public void testNoValidMove() {
-		Board gameBoard = new Board();
+		Board gameBoard = Board.withDefaultSize();
 		gameBoard.setPiece(4, 4, PieceState.BLACK);
 		gameBoard.setPiece(5, 5, PieceState.BLACK);
 		assertFalse(gameBoard.hasValidMoves(PieceState.WHITE));
+	}
+	
+	@Test
+	public void testCustomSize() {
+		Board gameBoard = Board.withCustomSize(4);
+		ReversiView view = new ReversiStdoutPrinter();
+		
+		view.showBoard(gameBoard);
 	}
 	
 }

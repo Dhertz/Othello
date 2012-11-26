@@ -27,4 +27,5 @@ Report:
 - Talk about each class
 - UML diagrams
 - Fix code duplication in Board
-
+- Why we didn't use a singleton for the board
+- Factory design pattern for board constructor
