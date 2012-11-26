@@ -13,6 +13,7 @@ public class ReversiController {
 	private Board board;
 	private ReversiOutput output;
 	private Scanner reader;
+	private Player currentPlayer;
 	
 	public ReversiController(Board board, ReversiOutput output) {
 		super();
@@ -28,6 +29,8 @@ public class ReversiController {
 		
 		//System.out.println("Player 2, what is your name?");
 		player2 = new Player(PieceState.WHITE, "Daniel");// reader.nextLine());
+		
+		currentPlayer = player1;
 	}
 
 	public Player getPlayer1() {
@@ -40,6 +43,60 @@ public class ReversiController {
 
 	public Board getBoard() {
 		return board;
+	}
+	
+	public void readMove() {
+		if(!board.hasValidMoves(currentPlayer.getColour())) {
+			System.out.println(currentPlayer.getName() + " has no valid move!");
+			changePlayer();
+		}
+		System.out.println(currentPlayer.getName()  + "'s move, please enter your move: letter, number.");
+		String input = reader.nextLine();
+		String [] tokenised = input.split(" ");
+		
+		try {
+			
+			char x  = tokenised[0].charAt(0);
+			int xi = x - 96;
+			int y = Integer.parseInt(tokenised[1]);
+			
+			if(board.isValidMove(xi, y, currentPlayer.getColour())) {
+				board.setPiece(xi, y, currentPlayer.getColour());
+				board.capturePieces(xi, y, currentPlayer.getColour());
+				changePlayer();
+			} else {
+				System.out.println("Invalid move.");
+				readMove();
+			}
+			
+		} catch (ArrayIndexOutOfBoundsException e) {
+			
+			System.out.println("Invalid move." + e);
+			readMove();
+		}
+		
+	}
+	
+	private void changePlayer() {
+		currentPlayer = currentPlayer.equals(player1) ? player2 : player1;
+	}
+	
+	public void playGame() {
+		while(isPlayable()) {
+			output.printBoard(board);
+			readMove();
+		}
+		output.printBoard(board);
+		System.out.println("Game over! Winner is: " + getWinnerName() + ".");
+	}
+	
+	private boolean isPlayable() {
+		return board.hasValidMoves(player1.getColour()) && 
+				board.hasValidMoves(player2.getColour());
+	}
+	
+	private String getWinnerName() {
+		return "Everybody wins!";
 	}
 
 }
