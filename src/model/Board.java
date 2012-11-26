@@ -136,5 +136,17 @@ public class Board {
 	public Piece getPiece(int column, int row) {
 		return board[row - 1][column - 1];
 	}
+	
+	public int getPieceCount(PieceState st) {
+		int count = 0;
+		for (int i = 0; i < BOARDSIZE; i++) {
+			for (int j = 0; j < BOARDSIZE; j++) {
+				if (board[i][j].getState() == st) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
 
 }
