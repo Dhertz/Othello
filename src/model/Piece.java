@@ -5,7 +5,6 @@ public class Piece {
 	private PieceState state;
 
 	public Piece(PieceState state) {
-		super();
 		this.state = state;
 	}
 

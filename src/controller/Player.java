@@ -8,7 +8,6 @@ public class Player {
 	private String name;
 	
 	public Player(PieceState colour, String name) {
-		super();
 		this.colour = colour;
 		this.name = name;
 	}
