@@ -31,14 +31,14 @@ public class Board {
 	}
 
 	public void setPiece(int column, int row, PieceState st) {
-		//System.out.println("setting (" + column + ", " + row + ") to " + st);
+		// System.out.println("setting (" + column + ", " + row + ") to " + st);
 		board[row - 1][column - 1].setState(st);
 	}
 
 	// Capture surrounding pieces - to be called after setPiece
 	public void capturePieces(int column, int row, PieceState st) {
 		ArrayList<Piece> captureList = new ArrayList<Piece>();
-		
+
 		for (int i = 0; i < DIRECT_X.length; i++) {
 			int x = column, y = row;
 
@@ -103,6 +103,18 @@ public class Board {
 			}
 		}
 
+		return false;
+	}
+	
+	public boolean hasValidMoves(PieceState st) {
+		for (int i = 0; i < BOARDSIZE; i++) {
+			for (int j = 0; j < BOARDSIZE; j++) {
+				if (isValidMove(i, j, st)) {
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 

@@ -58,4 +58,12 @@ public class ReversiTests {
 		printer.printBoard(gameBoard);
 	}
 	
+	@Test
+	public void testNoValidMove() {
+		Board gameBoard = new Board();
+		gameBoard.setPiece(4, 4, PieceState.BLACK);
+		gameBoard.setPiece(5, 5, PieceState.BLACK);
+		assertFalse(gameBoard.hasValidMoves(PieceState.WHITE));
+	}
+	
 }
