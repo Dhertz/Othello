@@ -8,7 +8,6 @@ public class Reversi {
 
 	public static void main(String[] args) {
 		Board gameBoard;
-		System.out.println(args.length);
 		if (args.length == 1) {
 			try {
 			gameBoard = Board.withCustomSize(Integer.parseInt(args[0]));
