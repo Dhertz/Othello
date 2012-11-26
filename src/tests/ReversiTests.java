@@ -30,6 +30,7 @@ public class ReversiTests {
 		assertTrue(gameBoard.isValidMove(5, 6, PieceState.BLACK));
 		assertFalse(gameBoard.isValidMove(3, 5, PieceState.BLACK));
 		assertFalse(gameBoard.isValidMove(10, 5, PieceState.BLACK));
+		assertFalse(gameBoard.isValidMove(4, 4, PieceState.BLACK));
 	}
 
 }

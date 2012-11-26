@@ -6,8 +6,8 @@ public class Board {
 	private static final int BOARDSIZE = 8;
 	
 	// These arrays allow us to loop through in all possible directions
-	private static final int[] DIRECT_X = { -1, 0, 1, -1, 1, -1, 0, 1 };
-    private static final int[] DIRECT_Y = { -1, -1, -1, 0, 0, 1, 1, 1 };
+	private static final int[] DIRECT_X = { -1,  0,  1, -1, 1, -1, 0, 1 };
+    private static final int[] DIRECT_Y = { -1, -1, -1,  0, 0,  1, 1, 1 };
 
 	public Board() {
 		board = new Piece[BOARDSIZE][BOARDSIZE];
@@ -40,7 +40,7 @@ public class Board {
 			return false;
 		}
 		
-		for (int i = 0; i < BOARDSIZE; i++) {
+		for (int i = 0; i < DIRECT_X.length; i++) {
             boolean sawOther = false, sawSelf = false;
             int x = zeroIndexedColumn, y = zeroIndexedRow;
             for (int j = 0; j < BOARDSIZE; j++) {

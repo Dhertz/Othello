@@ -27,7 +27,7 @@ public class ReversiController {
 		player1 = new Player(PieceState.BLACK, "Owen");//reader.nextLine());
 		
 		//System.out.println("Player 2, what is your name?");
-		player2 = new Player(PieceState.WHITE, "Owen");// reader.nextLine());
+		player2 = new Player(PieceState.WHITE, "Daniel");// reader.nextLine());
 	}
 
 	public Player getPlayer1() {

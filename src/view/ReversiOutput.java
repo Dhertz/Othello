@@ -23,6 +23,7 @@ public class ReversiOutput {
 			System.out.println();
 			rowNum++;
 		}
+		System.out.println();
 	}
 
 }

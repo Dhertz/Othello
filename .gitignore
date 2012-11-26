@@ -21,14 +21,4 @@
 *.swp
 
 #ignore OS X indexing files and eclipse files
-.DS_Store
-.project
-
-compile
-libantlr3c/antlr3config.h
-
-#ignore system-specific junk
-MAliceLexer.c
-MAliceLexer.h
-MAliceParser.c
-MAliceParser.h
+.DS_Store *.class
