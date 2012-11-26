@@ -90,7 +90,7 @@ public class ReversiController {
 	}
 	
 	private boolean isPlayable() {
-		return board.hasValidMoves(player1.getColour()) && 
+		return board.hasValidMoves(player1.getColour()) ||
 				board.hasValidMoves(player2.getColour());
 	}
 	

@@ -125,15 +125,15 @@ public class Board {
 	}
 	
 	public boolean hasValidMoves(PieceState st) {
-		for (int i = 0; i < BOARDSIZE; i++) {
-			for (int j = 0; j < BOARDSIZE; j++) {
+		boolean valid = false;
+		for (int i = 1; i <= BOARDSIZE; i++) {
+			for (int j = 1; j <= BOARDSIZE; j++) {
 				if (isValidMove(i, j, st)) {
-					return true;
+					valid = true;
 				}
 			}
 		}
-		
-		return false;
+		return valid;
 	}
 
 	private PieceState getColour(int column, int row) {
