@@ -23,11 +23,11 @@ public class ReversiController {
 	}
 
 	private void setupPlayers() {
-		//System.out.println("Player 1, what is your name?");
-		player1 = new Player(PieceState.BLACK, "Owen");//reader.nextLine());
+		System.out.println("Player 1, what is your name?");
+		player1 = new Player(PieceState.BLACK, reader.nextLine());
 		
-		//System.out.println("Player 2, what is your name?");
-		player2 = new Player(PieceState.WHITE, "Daniel");// reader.nextLine());
+		System.out.println("Player 2, what is your name?");
+		player2 = new Player(PieceState.WHITE, reader.nextLine());
 		
 		currentPlayer = player1;
 	}
@@ -95,7 +95,11 @@ public class ReversiController {
 	}
 	
 	private String getWinnerName() {
-		return "Everybody wins!";
+		if(board.getPieceCount(player1.getColour()) > board.getPieceCount(player2.getColour())) {
+			return player1.getName();
+		} else {
+			return player2.getName();
+		}
 	}
 
 }
