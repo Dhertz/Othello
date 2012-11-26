@@ -50,12 +50,12 @@ public class ReversiTests {
 		gameBoard.setPiece(4, 3, PieceState.BLACK);
 		gameBoard.capturePieces(4, 3, PieceState.BLACK);
 		
-		printer.printBoard(gameBoard);
+		printer.showBoard(gameBoard);
 		
 		gameBoard.setPiece(3, 5, PieceState.WHITE);
 		gameBoard.capturePieces(3, 5, PieceState.WHITE);
 		
-		printer.printBoard(gameBoard);
+		printer.showBoard(gameBoard);
 	}
 	
 	@Test

@@ -15,7 +15,6 @@ public class ReversiController {
 	private Scanner reader;
 	
 	public ReversiController(Board board, ReversiOutput output) {
-		super();
 		this.board = board;
 		this.output = output;
 		reader = new Scanner(System.in);
