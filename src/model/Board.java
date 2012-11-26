@@ -49,7 +49,6 @@ public class Board {
 	}
 
 	public void setPiece(int column, int row, PieceState st) {
-		// System.out.println("setting (" + column + ", " + row + ") to " + st);
 		board[row - 1][column - 1].setState(st);
 	}
 

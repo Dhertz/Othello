@@ -31,18 +31,6 @@ public class ReversiController {
 		
 		currentPlayer = player1;
 	}
-
-	public Player getPlayer1() {
-		return player1;
-	}
-
-	public Player getPlayer2() {
-		return player2;
-	}
-
-	public Board getBoard() {
-		return board;
-	}
 	
 	public void readMove() {
 		if(!board.hasValidMoves(currentPlayer.getColour())) {

@@ -7,9 +7,6 @@ import model.PieceState;
 
 import org.junit.Test;
 
-import view.ReversiStdoutPrinter;
-import view.ReversiView;
-
 public class ReversiTests {
 
 	@Test
