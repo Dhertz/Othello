@@ -46,17 +46,16 @@ public class ReversiTests {
 	@Test
 	public void testCaptureSetSequence() {
 		Board gameBoard = Board.withDefaultSize();
-		ReversiStdoutPrinter printer = new ReversiStdoutPrinter();
 		
 		gameBoard.setPiece(4, 3, PieceState.BLACK);
 		gameBoard.capturePieces(4, 3, PieceState.BLACK);
 		
-		printer.showBoard(gameBoard);
+		assertEquals(PieceState.BLACK, gameBoard.getPiece(4, 4).getState());
 		
 		gameBoard.setPiece(3, 5, PieceState.WHITE);
 		gameBoard.capturePieces(3, 5, PieceState.WHITE);
-		
-		printer.showBoard(gameBoard);
+
+		assertEquals(PieceState.WHITE, gameBoard.getPiece(4, 5).getState());
 	}
 	
 	@Test
@@ -70,9 +69,23 @@ public class ReversiTests {
 	@Test
 	public void testCustomSize() {
 		Board gameBoard = Board.withCustomSize(4);
-		ReversiView view = new ReversiStdoutPrinter();
 		
-		view.showBoard(gameBoard);
+		assertEquals(4, gameBoard.getSize());
+	}
+	
+	@Test
+	public void testHasValidMoves() {
+		Board gameBoard = Board.withCustomSize(4);
+		
+		assertTrue(gameBoard.hasValidMoves(PieceState.BLACK));
+		assertTrue(gameBoard.hasValidMoves(PieceState.WHITE));
+		
+		gameBoard.setPiece(2, 1, PieceState.BLACK);
+		gameBoard.capturePieces(2, 1, PieceState.BLACK);
+		gameBoard.setPiece(4, 3, PieceState.BLACK);
+		gameBoard.capturePieces(4, 3, PieceState.BLACK);
+		
+		assertFalse(gameBoard.hasValidMoves(PieceState.WHITE));
 	}
 	
 }
