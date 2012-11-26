@@ -26,4 +26,5 @@ Report:
 - Is player model or controller?
 - Talk about each class
 - UML diagrams
+- Fix code duplication in Board
 

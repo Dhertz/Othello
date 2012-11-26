@@ -15,10 +15,16 @@
 #ignore junk files from compiling Haskell code
 *.hi
 
+#ignore files from compiling Java code
+*.class
+bin/*
+
 #ignore other junk files
 *.backup
 *.kate-swp
 *.swp
 
 #ignore OS X indexing files and eclipse files
-.DS_Store *.class
+.DS_Store 
+.classpath
+.project
