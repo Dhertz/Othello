@@ -11,6 +11,8 @@ public class Reversi {
 		Board gameBoard = new Board();
 		ReversiOutput printer = new ReversiOutput();
 		ReversiController controller = new ReversiController(gameBoard, printer);
+
+		controller.playGame();
 	}
 
 }
