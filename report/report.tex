@@ -63,7 +63,12 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ showBoard : void}
 \end{interface}
 
-\begin{class}{ReversiStdoutPrinter}{20,10}
+\begin{class}{ReversiStdoutPrinter}{21,6}
+\inherit{ReversiView}
+\operation{+ showBoard : void}
+\end{class}
+
+\begin{class}{ReversiGraphicalBoard}{17.7,8}
 \inherit{ReversiView}
 \operation{+ showBoard : void}
 \end{class}
