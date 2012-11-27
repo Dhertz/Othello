@@ -2,6 +2,7 @@ package game;
 
 import controller.ReversiController;
 import view.ReversiGraphicalBoard;
+import view.ReversiStdoutPrinter;
 import view.ReversiView;
 import model.Board;
 
@@ -21,7 +22,7 @@ public class Reversi {
             gameBoard = Board.withDefaultSize();
         }
 
-        ReversiView printer = new ReversiGraphicalBoard(gameBoard);
+        ReversiView printer = new ReversiStdoutPrinter(gameBoard);
         ReversiController controller = new ReversiController(gameBoard, printer);
 
         controller.playGame();
