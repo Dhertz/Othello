@@ -28,7 +28,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 
 \begin{sidewaysfigure}
 \begin{tikzpicture}
-\begin{class}{ReversiController}{12,16.3} 
+\begin{class}[text width=5.3cm]{ReversiController}{11,16.3} 
 \attribute{- board : Board}
 \attribute{- currentPlayer : Player}
 \attribute{- output : ReversiView}
@@ -43,9 +43,10 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{- getWinnerName : String}
 \operation{- handleException : void}
 \operation{- isPlayable : boolean}
+\operation{- printWelcomeMessage : void}
 \end{class}
 
-\begin{class}[text width=5cm]{Board}{12,6}
+\begin{class}[text width=5cm]{Board}{11,6}
 \attribute{- board : Piece[][]}
 \attribute{- BOARDSIZE : int}
 \attribute{- DIRECT\_X : int[]}
@@ -64,7 +65,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{- setupBoard : void}
 \end{class}
 
-\begin{interface}{ReversiView}{20,13.25}
+\begin{interface}{ReversiView}{20,13.02}
 \operation{+ showBoard : void}
 \end{interface}
 
@@ -78,7 +79,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ showBoard : void}
 \end{class}
 
-\begin{class}[text width=8cm]{Player}{2, 14}
+\begin{class}[text width=7.1cm]{Player}{2, 13.75}
 \attribute{- colour : PieceState}
 \attribute{- name : String}
 \operation{+ Player(PieceState colour, String name)}
