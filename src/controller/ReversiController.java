@@ -28,7 +28,7 @@ public class ReversiController {
         System.out.println("            | |_ ___");                                
         System.out.println("            | __/ _ \\");                               
         System.out.println("            | || (_) |");                              
-        System.out.println("            \\___\\___/  _ _");                  
+        System.out.println("             \\__\\___/  _ _");                  
         System.out.println(" / __ \\| | | |        | | |");                 
         System.out.println("| |  | | |_| |__   ___| | | ___");             
         System.out.println("| |  | | __| '_ \\ / _ | | |/ _ \\");            
@@ -74,11 +74,18 @@ public class ReversiController {
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
-
-            System.out.println("Invalid move." + e);
-            readMove();
+        	handleException();
+        } catch (StringIndexOutOfBoundsException e){
+        	handleException();
+        } catch (NumberFormatException e) {
+        	handleException();
         }
 
+    }
+    
+    private void handleException() {
+    	System.out.println("Invalid move. Please enter letter <space> row, eg a 1.");
+        readMove();
     }
 
     private void changePlayer() {
