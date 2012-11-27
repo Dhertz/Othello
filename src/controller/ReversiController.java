@@ -28,7 +28,7 @@ public class ReversiController {
         System.out.println("            | |_ ___");                                
         System.out.println("            | __/ _ \\");                               
         System.out.println("            | || (_) |");                              
-        System.out.println("             \\__\\___/  _ _");                  
+        System.out.println("  ____   _  _\\__\\___/  _ _");                  
         System.out.println(" / __ \\| | | |        | | |");                 
         System.out.println("| |  | | |_| |__   ___| | | ___");             
         System.out.println("| |  | | __| '_ \\ / _ | | |/ _ \\");            
