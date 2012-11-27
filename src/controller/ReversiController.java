@@ -19,23 +19,28 @@ public class ReversiController {
         this.board = board;
         this.output = printer;
         reader = new Scanner(System.in);
-        System.out.println("\\ \\        / / | |");                        
-        System.out.println(" \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___");  
-        System.out.println("  \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\"); 
-        System.out.println("   \\  /\\  |  __| | (_| (_) | | | | | |  __/ ");
-        System.out.println("    \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|" );
-        System.out.println("            | |");                                     
-        System.out.println("            | |_ ___");                                
-        System.out.println("            | __/ _ \\");                               
-        System.out.println("            | || (_) |");                              
-        System.out.println("  ____   _  _\\__\\___/  _ _");                  
-        System.out.println(" / __ \\| | | |        | | |");                 
-        System.out.println("| |  | | |_| |__   ___| | | ___");             
-        System.out.println("| |  | | __| '_ \\ / _ | | |/ _ \\");            
-        System.out.println("| |__| | |_| | | |  __| | | (_) |");           
-        System.out.println(" \\____/ \\__|_| |_|\\___|_|_|\\___/"); 
-        System.out.println("Please enter moves in the format letter <space> number, eg a 1");
+        printWelcomeMessage();
         setupPlayers();
+    }
+
+    private void printWelcomeMessage() {
+        System.out.println("\\ \\        / / | |");
+        System.out.println(" \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___");
+        System.out.println("  \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\");
+        System.out.println("   \\  /\\  |  __| | (_| (_) | | | | | |  __/ ");
+        System.out.println("    \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|");
+        System.out.println("            | |");
+        System.out.println("            | |_ ___");
+        System.out.println("            | __/ _ \\");
+        System.out.println("            | || (_) |");
+        System.out.println("  ____   _  _\\__\\___/  _ _");
+        System.out.println(" / __ \\| | | |        | | |");
+        System.out.println("| |  | | |_| |__   ___| | | ___");
+        System.out.println("| |  | | __| '_ \\ / _ | | |/ _ \\");
+        System.out.println("| |__| | |_| | | |  __| | | (_) |");
+        System.out.println(" \\____/ \\__|_| |_|\\___|_|_|\\___/");
+        System.out
+                .println("Please enter moves in the format letter <space> number, eg a 1");
     }
 
     private void setupPlayers() {
@@ -53,8 +58,8 @@ public class ReversiController {
             System.out.println(currentPlayer.getName() + " has no valid move!");
             changePlayer();
         }
-        System.out.println(currentPlayer.getName()
-                + ", please enter your move");
+        System.out
+                .println(currentPlayer.getName() + ", please enter your move");
         String input = reader.nextLine();
         String[] tokenised = input.split(" ");
 
@@ -74,17 +79,18 @@ public class ReversiController {
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
-        	handleException();
-        } catch (StringIndexOutOfBoundsException e){
-        	handleException();
+            handleException();
+        } catch (StringIndexOutOfBoundsException e) {
+            handleException();
         } catch (NumberFormatException e) {
-        	handleException();
+            handleException();
         }
 
     }
-    
+
     private void handleException() {
-    	System.out.println("Invalid move. Please enter letter <space> row, eg a 1.");
+        System.out
+                .println("Invalid move. Please enter letter <space> row, eg a 1");
         readMove();
     }
 
