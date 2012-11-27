@@ -18,8 +18,8 @@
 This report details our implementation of the game Othello, written in Java. In the report we will discuss the design decisions we made when writing the code for the game, and the reasons for these decisions. We will run through all the classes used in the solution, and explain how they are linked together using UML. 
 
 \section*{Implementation}
-Before starting to code our application we planned out the strategy for our implementation with pen and paper. Doing this allowed us to think more clearly about the design of the system on an abstract level, instead of diving into the code and getting lost in the details of implementation.\\
-\indent Throughout the project we used Test Driven Development, implementing this strategy using JUnit in the Eclipse IDE. Working in this cyclic way allowed us to implement features quickly since we had very rapid feedback on whether the code we had just written worked or not. It also gave us safety net, in the fact that we knew that once we'd passed a test, we could work on improving the code knowing that we already had a working implementation. The bulk of the TDD was done on the model section of the implementation, since the methods in that class were ones that had very well-defined behaviour and where the more complex algorithms in the project are found. The unit tests we made can be found in \texttt{/src/tests/ReversiTests.java}.
+Before starting to code our application we planned out the strategy for our implementation with pen and paper, starting with essentially drawing the UML diagram on the next page and bullet pointing what we wanted each class to do. Doing this allowed us to think more clearly about the design of the system on an abstract level, instead of diving into the code and getting lost in the details of implementation.\\
+\indent Throughout the project we used Test Driven Development, implementing this strategy using JUnit in the Eclipse IDE. Working in this cyclic way allowed us to implement features quickly since we had very rapid feedback on whether the code we had just written worked or not. It also gave us safety net, in the fact that we knew that once we'd passed a test, we could work on improving the code knowing that we already had a working implementation. The bulk of the TDD was done on the model section of the implementation, since the methods in that class were ones that had very well-defined behaviour. The model is where the more complex algorithms in the project are found, so thourough unit testing was required in this section especially. The unit tests we made can be found in \texttt{/src/tests/ReversiTests.java}.
 
 \section*{The Classes}
 
@@ -28,7 +28,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 
 \begin{sidewaysfigure}
 \begin{tikzpicture}
-\begin{class}{ReversiController}{12,16} 
+\begin{class}{ReversiController}{12,16.3} 
 \attribute{- board : Board}
 \attribute{- currentPlayer : Player}
 \attribute{- output : ReversiView}
@@ -64,7 +64,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{- setupBoard : void}
 \end{class}
 
-\begin{interface}{ReversiView}{20,13.2}
+\begin{interface}{ReversiView}{20,13.25}
 \operation{+ showBoard : void}
 \end{interface}
 
@@ -78,7 +78,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ showBoard : void}
 \end{class}
 
-\begin{class}[text width=8cm]{Player}{2, 13.9}
+\begin{class}[text width=8cm]{Player}{2, 14}
 \attribute{- colour : PieceState}
 \attribute{- name : String}
 \operation{+ Player(PieceState colour, String name)}
