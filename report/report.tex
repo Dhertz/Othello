@@ -171,6 +171,8 @@ In this section we will outline a few design decisions that we made throughout t
 \item We agreed that it wasn't worth having a Abstract Data Type inside the board class, as that would also be unnecessarily complicated, so we stuck to a simple 2 dimensional array of \texttt{Piece} objects.
 
 \item It would have been possible to implement the same sort of decoupling between the controller and the model as we implemented between the view and model. However, this would have been done in a very similar way, and wouldn't have shown off any new design patterns or functionality, so we decided it wasn't worth implementing for the purposes of this project.
+
+\item We were tempted to implement some of coordinate class, which would contain fields for the x and y components. This could be use to record the position of a piece in the board. However, we decided that this would add uneccessary complexity; having to add getter and setter methods all over various classes would just make the code less readable.
 \end{itemize}
 
 \end{document}
