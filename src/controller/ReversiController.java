@@ -19,6 +19,22 @@ public class ReversiController {
         this.board = board;
         this.output = printer;
         reader = new Scanner(System.in);
+        System.out.println("\\ \\        / / | |");                        
+        System.out.println(" \\ \\  /\\  / ___| | ___ ___  _ __ ___   ___");  
+        System.out.println("  \\ \\/  \\/ / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\"); 
+        System.out.println("   \\  /\\  |  __| | (_| (_) | | | | | |  __/ ");
+        System.out.println("    \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|" );
+        System.out.println("            | |");                                     
+        System.out.println("            | |_ ___");                                
+        System.out.println("            | __/ _ \\");                               
+        System.out.println("            | || (_) |");                              
+        System.out.println("            \\___\\___/  _ _");                  
+        System.out.println(" / __ \\| | | |        | | |");                 
+        System.out.println("| |  | | |_| |__   ___| | | ___");             
+        System.out.println("| |  | | __| '_ \\ / _ | | |/ _ \\");            
+        System.out.println("| |__| | |_| | | |  __| | | (_) |");           
+        System.out.println(" \\____/ \\__|_| |_|\\___|_|_|\\___/"); 
+        System.out.println("Please enter moves in the format letter <space> number, eg a 1");
         setupPlayers();
     }
 
@@ -38,7 +54,7 @@ public class ReversiController {
             changePlayer();
         }
         System.out.println(currentPlayer.getName()
-                + "'s move, please enter your move: letter, number.");
+                + ", please enter your move");
         String input = reader.nextLine();
         String[] tokenised = input.split(" ");
 
