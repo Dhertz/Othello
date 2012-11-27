@@ -18,8 +18,7 @@
 This report details our implementation of the game Othello, written in Java. In the report we will discuss the design decisions we made when writing the code for the game, and the reasons for these decisions. We will run through all the classes used in the solution, and explain how they are linked together using UML. 
 
 \section*{Implementation}
-We implement this game using the MVC arcitecture. We decided this would be the best approach as we wanted to implement a very simple console based view, and using MVC would keep coupling between the view and the actual game data to a minimum, allowing a more advanced visual representation of the board to be pluged straight in at a later date.\\
-\indent Before starting to code our application we planned out the strategy for our implementation with pen and paper. Doing this allowed us to think more clearly about the design of the system on an abstract level, instead of diving into the code and getting lost in the details of implementation.\\
+Before starting to code our application we planned out the strategy for our implementation with pen and paper. Doing this allowed us to think more clearly about the design of the system on an abstract level, instead of diving into the code and getting lost in the details of implementation.\\
 \indent Throughout the project we used Test Driven Development, implementing this strategy using JUnit in the Eclipse IDE. Working in this cyclic way allowed us to implement features quickly since we had very rapid feedback on whether the code we had just written worked or not. It also gave us safety net, in the fact that we knew that once we'd passed a test, we could work on improving the code knowing that we already had a working implementation. The bulk of the TDD was done on the model section of the implementation, since the methods in that class were ones that had very well-defined behaviour and where the more complex algorithms in the project are found. The unit tests we made can be found in \texttt{/src/tests/ReversiTests.java}.
 
 \section*{The Classes}
@@ -42,6 +41,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ setupPlayers : void}
 \operation{- changePlayer : void}
 \operation{- getWinnerName : String}
+\operation{- handleException : void}
 \operation{- isPlayable : boolean}
 \end{class}
 
@@ -114,7 +114,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \end{sidewaysfigure}
 
 \subsection*{Reversi}
-This class acts as the entry point for the program. The only thing this class does is instantiate the Model, View and Controller, and checks to make sure the command line arguments (if any) are valid. Then it calls the controller to start the game.
+This class acts as the entry point for the program. The only thing this class does is instantiate the Model, View and Controller, and checks to make sure the command line arguments (if any) are valid. Then it calls the controller to start the game, and completely hands off the running of the game to the \texttt{ReversiController} class.
 
 \subsection*{Controller}
 \subsubsection*{ReversiController}
@@ -151,7 +151,7 @@ Here are some screenshots which show our applciation running, and the two differ
 \includegraphics[width=0.5\textwidth]{screenies/gamestart}
 \includegraphics[width=0.5\textwidth]{screenies/startsmall}\\
 
-\noindent The fisrt capture shows the start of a game when using the \texttt{ReversiStdoutView}. The game requests the players' names (using the \texttt{java.util.Scanner} in the controller), and prints the inital game board. The second capture demonstrates how a game is started with a custom board size - the \texttt{Reversi} class detects that there is a command line argument and invokes a different factory method in the \texttt{Board} class which constructs the board obect with a custom board size.
+\noindent The first capture shows the start of a game when using the \texttt{ReversiStdoutView}. The game requests the players' names (using the \texttt{java.util.Scanner} in the controller), and prints the inital game board. The second capture demonstrates how a game is started with a custom board size - the \texttt{Reversi} class detects that there is a command line argument and invokes a different factory method in the \texttt{Board} class which constructs the board obect with a custom board size. The captures also show off our ASCII art!
 
 \noindent
 \includegraphics[width=0.5\textwidth]{screenies/invalidsmall}
@@ -168,9 +168,13 @@ Here are some screenshots which show our applciation running, and the two differ
 In this section we will outline a few design decisions that we made throughout the course of the project.
 
 \begin{itemize}
+\item We decided that the MVC architecture would be the best approach as we wanted to implement a very simple console based view at first to allow us to test the functionality of the game as quickly as possible (alongside the unit tests). Once we were happy with the functionality of the game, we added a more advanced graphical view. Using MVC would keep coupling between the view and the actual game data to a minimum.
+
 \item We decided it was not worth using the singleton pattern for the board class. Because we would only ever make one \texttt{Board} object which would be passed to the controller and the view, we decided it was overkill to force the user to only ever have one board.
 
-\item We agreed that it wasn't worth 
+\item We agreed that it wasn't worth having a Abstract Data Type inside the board class, as that would also be uneccessarily complicated, so we stuck to a simple 2 dimensional array of \texttt{Piece} objects.
+
+\item It would have been possible to implement the same sort of decoupling between the controller and the model as we implemented between the view and model. However, this would have been done in a very similar way, and wouldn't have shown off any new design patterns or functionality, so we decided it wasn't worth implementing for the purposes of this project.
 \end{itemize}
 
 \end{document}
