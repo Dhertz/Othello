@@ -15,7 +15,9 @@
 This report details our implementation of the game Othello, written in Java. In the report we will discuss the design decisions we made when writing the code for the game, and the reasons for these decisions. We will run through all the classes used in the solution, and explain how they are linked together using UML.
 
 \section*{Implementation}
-We implement this game using the MVC arcitecture. We decided this would be the best approach as we wanted to implement a very simple console based view, and using MVC would keep coupling between the view and the actual game data to a minimum, allowing a more advanced visual representation of the board to be pluged straight in at a later date.
+We implement this game using the MVC arcitecture. We decided this would be the best approach as we wanted to implement a very simple console based view, and using MVC would keep coupling between the view and the actual game data to a minimum, allowing a more advanced visual representation of the board to be pluged straight in at a later date.\\
+\ident Before starting to code our application we planned out the strategy for our implementation with pen and paper. Doing this allowed us to think more clearly about the design of the system on an abstract level, instead of diving into the code and getting lost in the details of implementation.\\
+\ident Throughout the project we used Test Driven Development, implementing this strategy using JUnit in the Eclipse IDE. Working in this cyclic way allowed us to implement features quickly since we had very rapid feedback on whether the code we had just written worked or not. It also gave us safety net, in the fact that we knew that once we'd passed a test, we could work on improving the code knowing that we already had a working implementation. The bulk of the TDD was done on the model section of the implementation, since the methods in that class were ones that had very well-defined behaviour and where the more complex algorithms in the project are found. The unit tests we made can be found in \texttt{/src/tests/ReversiTests.java}.
 
 \section*{The Classes}
 
