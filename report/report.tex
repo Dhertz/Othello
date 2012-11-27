@@ -12,7 +12,7 @@
 \maketitle
 
 \section*{Introduction}
-This report details our implementation of the game Othello, written in Java. In the report we will discuss the design decisions we made when writing the code for the game, and the reasons for these decisions. We will run through all the classes used in the solution, and explain how they are linked together using UML.
+This report details our implementation of the game Othello, written in Java. In the report we will discuss the design decisions we made when writing the code for the game, and the reasons for these decisions. We will run through all the classes used in the solution, and explain how they are linked together using UML. 
 
 \section*{Implementation}
 We implement this game using the MVC arcitecture. We decided this would be the best approach as we wanted to implement a very simple console based view, and using MVC would keep coupling between the view and the actual game data to a minimum, allowing a more advanced visual representation of the board to be pluged straight in at a later date.
@@ -25,11 +25,11 @@ The UML diagram on the next page shows the relationships between the classes in 
 \begin{sidewaysfigure}
 \begin{tikzpicture}
 \begin{class}{ReversiController}{12,16} 
+\attribute{- board : Board}
+\attribute{- currentPlayer : Player}
+\attribute{- output : ReversiView}
 \attribute{- player1 : Player}
 \attribute{- player2 : Player}
-\attribute{- currentPlayer : Player}
-\attribute{- board : Board}
-\attribute{- output : ReversiStdoutPrinter}
 \attribute{- reader : Scanner}
 \operation{+ ReversiController(Board board, ReversiView output)} 
 \operation{+ playGame : void}
@@ -40,35 +40,35 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{- isPlayable : boolean}
 \end{class}
 
-\begin{class}[text width=8cm]{Board}{16,7}
+\begin{class}[text width=8cm]{Board}{12,6}
 \attribute{- board : Piece[][]}
 \attribute{- BOARDSIZE : int}
 \attribute{- DIRECT\_X : int[]}
 \attribute{- DIRECT\_Y : int[]}
-\operation{+ static withDefaultSize : Board}
-\operation{+ static withCustomSize : Board}
 \operation{- Board()}
 \operation{- Board(int size)}
-\operation{- setupBoard : void}
-\operation{+ setPiece : void}
 \operation{+ capturePieces : void}
-\operation{+ isValidMove : boolean}
 \operation{+ hasValidMoves : boolean}
+\operation{+ getPieceCount : int}
+\operation{+ isValidMove : boolean}
+\operation{+ setPiece : void}
+\operation[0]{+ withDefaultSize : Board}
+\operation[0]{+ withCustomSize : Board}
 \operation{- getColour : PieceState}
 \operation{- inBounds : boolean}
-\operation{+ getPieceCount : int}
+\operation{- setupBoard : void}
 \end{class}
 
-\begin{interface}{ReversiView}{20,16}
+\begin{interface}{ReversiView}{20,13.2}
 \operation{+ showBoard : void}
 \end{interface}
 
-\begin{class}{ReversiStdoutPrinter}{20,12}
+\begin{class}{ReversiStdoutPrinter}{20,10}
 \inherit{ReversiView}
 \operation{+ showBoard : void}
 \end{class}
 
-\begin{class}[text width=8cm]{Player}{3, 14}
+\begin{class}[text width=8cm]{Player}{2, 13.9}
 \attribute{- colour : PieceState}
 \attribute{- name : String}
 \operation{+ Player(PieceState colour, String name)}
@@ -76,7 +76,7 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ getName : String}
 \end{class}
 
-\begin{class}{Piece}{8,4}
+\begin{class}{Piece}{2.5,3}
 \attribute{- state : PieceState}
 \operation{+ Piece(PieceState state)}
 \operation{+ getState : PieceState}
@@ -94,6 +94,11 @@ The UML diagram on the next page shows the relationships between the classes in 
 \begin{class}{Reversi}{4,8}
 \operation{+ static main(String[] args) : void}
 \end{class}
+
+\unidirectionalAssociation{Player}{Players}{2}{ReversiController}
+\unidirectionalAssociation{Piece}{Pieces}{1..n}{Board}
+\unidirectionalAssociation{Board}{}{}{ReversiController}
+\unidirectionalAssociation{ReversiView}{}{}{ReversiController}
 
 \end{tikzpicture}
 \end{sidewaysfigure}
