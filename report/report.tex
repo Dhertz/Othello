@@ -93,19 +93,11 @@ The UML diagram on the next page shows the relationships between the classes in 
 \operation{+ setState : void}
 \end{class}
 
-% not sure how to do this
-%
 \begin{enum}[text width=3.5cm]{PieceState}{2.5,8}
 \attribute{EMPTY}
 \attribute{WHITE}
 \attribute{BLACK}
 \end{enum}
-
-%\node[umlcd style, draw, inner sep=0.5cm, fit = \umlcdPackageFit] (\umlcdPackageName) {};
-
-%\begin{class}{Reversi}{4,8}
-%\operation{+ static main(String[] args) : void}
-%\end{class}
 
 \unidirectionalAssociation{Player}{Players}{2}{ReversiController}
 \unidirectionalAssociation{Piece}{Pieces}{1..n}{Board}
